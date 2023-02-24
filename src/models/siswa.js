@@ -11,6 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      siswa.hasMany(models.pembayaran, {
+        as: "nisn",
+        foreignKey: "nisn",
+      });
+      siswa.hasMany(models.pembayaran, {
+        as: "idSpp",
+        foreignKey: "idSpp",
+      });
+      siswa.belongsTo(models.spp,{
+        as: "idSpp",
+        foreignKey: "idSpp",
+      });
+      siswa.belongsTo(models.kelas,{
+        as: "idKelas",
+        foreignKey: "idKelas",
+      });
     }
   }
   siswa.init({

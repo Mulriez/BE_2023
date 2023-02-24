@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class petugas extends Model {
     /**
@@ -11,17 +9,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      petugas.hasOne(models.pembayaran, {
+        as: "idPetugas",
+        foreignKey: "idPetugas",
+      });
     }
   }
-  petugas.init({
-    idPetugas: DataTypes.INTEGER,
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    namaPetugas: DataTypes.STRING,
-    level: DataTypes.ENUM
-  }, {
-    sequelize,
-    modelName: 'petugas',
-  });
+  petugas.init(
+    {
+      idPetugas: DataTypes.INTEGER,
+      username: DataTypes.STRING,
+      password: DataTypes.STRING,
+      namaPetugas: DataTypes.STRING,
+      level: DataTypes.ENUM("admin", "petugas"),
+    },
+    {
+      sequelize,
+      modelName: "petugas",
+    }
+  );
   return petugas;
 };
