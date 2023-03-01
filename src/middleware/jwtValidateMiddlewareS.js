@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-const jwtValidateMiddleware = (req, res, next) => {
+const jwtValidateMiddlewareS = (req, res, next) => {
   const authorization = req.headers.authorization;
   if (!authorization)
     return res.status(401).json({
@@ -17,13 +17,15 @@ const jwtValidateMiddleware = (req, res, next) => {
         err: err,
       });
     } else {
-      req.idPetugas = decode.idPetugas;
-      req.username = decode.username;
-      req.namaPetugas = decode.namaPetugas;
-      req.level = decode.level;
+      req.nisn = decode.nisn;
+      req.nis = decode.nis;
+      req.nama = decode.nama;
+      req.idKelas = decode.idKelas;
+      req.noTelp = decode.noTelp;
+      req.idSpp = decode.idSpp
       next();
     }
   });
 };
 
-module.exports = jwtValidateMiddleware;
+module.exports = jwtValidateMiddlewareS;

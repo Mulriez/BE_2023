@@ -10,14 +10,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       spp.hasMany(models.siswa, {
-        as: "idSpp",
+        as: "siswa",
         foreignKey: "idSpp",
       });
     }
   }
   spp.init(
     {
-      idSpp: DataTypes.INTEGER,
+      idSpp: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+      },
       tahun: DataTypes.INTEGER,
       nominal: DataTypes.INTEGER,
     },

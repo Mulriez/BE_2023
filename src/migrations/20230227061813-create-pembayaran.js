@@ -1,13 +1,13 @@
-"use strict";
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("pembayarans", {
+    await queryInterface.createTable('pembayarans', {
       idPembayaran: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       idPetugas: {
         type: Sequelize.INTEGER,
@@ -32,15 +32,15 @@ module.exports = {
         },
       },
       tglBayar: {
-        type: Sequelize.DATE,
+        allowNull: false,
+        type: Sequelize.DATE
       },
       bulanDibayar: {
-        type: Sequelize.STRING,
         allowNull: false,
+        type: Sequelize.STRING
       },
       tahunDibayar: {
-        type: Sequelize.STRING,
-        allowNull: false,
+        type: Sequelize.STRING
       },
       idSpp: {
         type: Sequelize.INTEGER,
@@ -54,20 +54,20 @@ module.exports = {
         },
       },
       jumlahBayar: {
-        type: Sequelize.INTEGER,
         allowNull: false,
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("pembayarans");
-  },
+    await queryInterface.dropTable('pembayarans');
+  }
 };

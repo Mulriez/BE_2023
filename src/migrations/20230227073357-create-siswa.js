@@ -1,24 +1,23 @@
-"use strict";
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("siswas", {
+    await queryInterface.createTable('siswas', {
       nisn: {
-        allowNull: false,
-        primaryKey: true,
         type: Sequelize.CHAR,
+        primaryKey: true,
+        allowNull: false,
       },
       nis: {
-        type: Sequelize.CHAR,
         allowNull: false,
+        type: Sequelize.CHAR
       },
       nama: {
-        type: Sequelize.STRING,
         allowNull: false,
+        type: Sequelize.STRING
       },
       idKelas: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
         references: {
@@ -28,12 +27,12 @@ module.exports = {
         },
       },
       alamat: {
-        type: Sequelize.TEXT,
         allowNull: false,
+        type: Sequelize.TEXT
       },
       noTelp: {
-        type: Sequelize.STRING,
         allowNull: false,
+        type: Sequelize.STRING
       },
       idSpp: {
         type: Sequelize.INTEGER,
@@ -48,15 +47,15 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE,
-      },
+        type: Sequelize.DATE
+      }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("siswas");
-  },
+    await queryInterface.dropTable('siswas');
+  }
 };
